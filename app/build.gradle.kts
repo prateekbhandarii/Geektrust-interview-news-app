@@ -16,6 +16,16 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val localPropertiesFile = rootProject.file("local.properties")
+        if (localPropertiesFile.exists()) {
+            val properties = org.jetbrains.kotlin.konan.properties.Properties()
+            localPropertiesFile.reader().use { properties.load(it) }
+            val apiKey = properties.getProperty("API_KEY") ?: ""
+            buildConfigField("String", "API_KEY", "\"$apiKey\"")
+        } else {
+            buildConfigField("String", "API_KEY", "\"\"")
+        }
     }
 
     buildTypes {
@@ -36,6 +46,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
