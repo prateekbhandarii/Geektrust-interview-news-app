@@ -41,7 +41,8 @@ class GetTopNewsUseCase @Inject constructor(
                                 url = article.url,
                                 imageUrl = article.imageUrl,
                                 publishedAt = article.publishedAt,
-                                sourceName = article.source.name
+                                sourceName = article.source.name,
+                                isRead = article.isRead
                             )
                         }.orEmpty(),
                         totalResults = response.data?.totalArticles ?: 0

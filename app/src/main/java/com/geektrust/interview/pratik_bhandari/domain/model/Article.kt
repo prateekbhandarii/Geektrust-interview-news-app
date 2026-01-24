@@ -9,5 +9,6 @@ data class Article(
     val imageUrl: String,
     val publishedAt: String,
     val language: String,
-    val source: Source
+    val source: Source,
+    val isRead: Boolean = false
 )

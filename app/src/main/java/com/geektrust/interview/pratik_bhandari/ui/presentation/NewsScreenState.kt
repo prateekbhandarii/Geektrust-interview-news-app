@@ -18,5 +18,6 @@ data class NewsArticleUiData(
     val url: String,
     val imageUrl: String?,
     val publishedAt: String,
-    val sourceName: String
+    val sourceName: String,
+    val isRead: Boolean = false
 )

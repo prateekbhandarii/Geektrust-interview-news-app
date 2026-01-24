@@ -37,7 +37,8 @@ class SearchNewsUseCase @Inject constructor(
                             url = it.url,
                             imageUrl = it.imageUrl,
                             publishedAt = it.publishedAt,
-                            sourceName = it.source.name
+                            sourceName = it.source.name,
+                            isRead = it.isRead
                         )
                     }.orEmpty(),
                     totalResults = result.data?.totalArticles ?: 0
