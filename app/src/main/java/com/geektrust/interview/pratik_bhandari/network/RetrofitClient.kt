@@ -13,7 +13,7 @@ object RetrofitClient {
 
     private val okHttpClient: OkHttpClient by lazy {
         OkHttpClient.Builder()
-            .addInterceptor(ApiInterceptor())
+            .addInterceptor(NetworkInterceptor())
             .addInterceptor(createLoggingInterceptor())
             .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(TIMEOUT, TimeUnit.SECONDS)
@@ -35,8 +35,8 @@ object RetrofitClient {
             .build()
     }
 
-    val apiService: ApiService by lazy {
-        retrofit.create(ApiService::class.java)
+    val restApiServices: RestApi by lazy {
+        retrofit.create(RestApi::class.java)
     }
 
     fun <T> createService(serviceClass: Class<T>, baseUrl: String = BASE_URL): T {
